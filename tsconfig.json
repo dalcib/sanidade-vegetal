@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "module": "es2015",
+        "noImplicitAny": false,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "outDir": "app",
+        "rootDir": "src",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
+
+    },
+    "exclude": [
+        "node_modules",
+        "typings/browser",
+        "typings/browser.d.ts",
+        "android",
+        "ios"
+    ]
+}

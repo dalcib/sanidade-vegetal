@@ -1,0 +1,19 @@
+{
+  "name": "sanidadevegetal",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "mobx": "^2.2.2",
+    "mobx-react": "^3.3.1",
+    "react": "15.0.2",
+    "react-native": "^0.26.2",
+    "react-native-autocomplete-input": "^1.1.0",
+    "react-native-drawer": "^2.2.3",
+    "react-native-material-design": "^0.3.6",
+    "react-native-material-ui": "^0.4.2",
+    "react-native-router-flux": "^3.30.0"
+  }
+}
