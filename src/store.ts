@@ -1,14 +1,27 @@
 import { observable, computed, autorun, useStrict, action, toJS} from 'mobx';
-import './arrayplus'
+import './common/arrayplus'
+import cefiti from './cefiti/store'
 
 
 
 
 useStrict(true)
 
-class Store {
+class Ui {
+
+@observable searchValue = ''
+@observable source = ''
+@observable field = ''
+@observable store = ''
 
 }
 
-export var store = new Store();
-export default store;
+export var ui = new Ui();
+
+var store = {
+  cefiti,
+  ui
+}
+
+
+export default {store};

@@ -14,7 +14,7 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
 
    render() {
         const closeDrawer = this.props.closeDrawer
-        const route = 'welcome' 
+        const route = 'home' 
         return (
             <MaterialDrawer theme='light'>
                 <MaterialDrawer.Header height={100} image={<Image source={require('./../../assets/drawer.jpg')} resizeMode={'cover'} />}>
@@ -26,7 +26,7 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
                         </View>
                     </View>
                 </MaterialDrawer.Header>
-                <MaterialDrawer.Section
+                <MaterialDrawer.Section style={{ marginTop: 4 }}
                     items={[{
                         icon: 'home',
                         value: 'Início',
@@ -40,24 +40,21 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
                     items={[{
                         icon: 'label',
                         value: 'CEFiTI - Trânsito Interestadual',
-                        //label: '12',
                         active: route === 'cefitiForm',
                         onPress: () => this.changeScene('cefitiForm'),
                         onLongPress: () => this.changeScene('cefitiForm')
                     }, {
                         icon: 'label',
                         value: 'PVIA - Importação',
-                        active: route === 'pvia',
-                        //label: 'x',
-                        onPress: () => this.changeScene('pvia'),
-                        onLongPress: () => this.changeScene('pvia')
+                        active: route === 'pviaForm',
+                        onPress: () => this.changeScene('pviaForm'),
+                        onLongPress: () => this.changeScene('pviaForm')
                     }, {
                         icon: 'label',
                         value: 'T-REX - Exportação',
-                        //label: '10',
-                        active: route === 'exportacao',
-                        onPress: () => this.changeScene('exportacao'),
-                        onLongPress: () => this.changeScene('exportacao')
+                        active: route === 'trexForm',
+                        onPress: () => this.changeScene('trexForm'),
+                        onLongPress: () => this.changeScene('trexForm')
                     }]}
                 />
                 <MaterialDrawer.Section style={{ marginTop: 4 }}
@@ -65,46 +62,40 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
                     items={[{
                        icon: 'list',
                        value: 'Quarentenárias Regulamentadas',
-                       //label: 'NEW',
                        active: route === 'quarentenarias',
                        onPress: () => this.changeScene('quarentenarias'),
                        onLongPress: () => this.changeScene('quarentenarias')
                      },{
                        icon: 'list',
                        value: 'Alertas Fitossanitários',
-                       //label: 'NEW',
                        active: route === 'alertas',
                        onPress: () => this.changeScene('alertas'),
                        onLongPress: () => this.changeScene('alertas')
                      },{
                         icon: 'list',
                         value: 'Áreas Livres',
-                        //label: '8',
                         active: route === 'alp',
                         onPress: () => this.changeScene('alp'),
                         onLongPress: () => this.changeScene('alp')
                     },{
                        icon: 'list',
                        value: 'Planos de Contigência',
-                       //label: 'NEW',
                        active: route === 'contingencia',
                        onPress: () => this.changeScene('contingencia'),
                        onLongPress: () => this.changeScene('contingencia')
                      }]}
                 />
-                <Divider style={{ marginTop: 8 }} />
-                <MaterialDrawer.Section
+                <MaterialDrawer.Section style={{ marginTop: 4 }}
                     title="Informações"
                     items={[{
                         icon: 'label',
                         value: 'Serviços do DSV',  
-                        active: route === 'search',
-                        onPress: () => this.changeScene('search'),
-                        onLongPress: () => this.changeScene('search')
+                        active: route === 'servicos',
+                        onPress: () => this.changeScene('servicos'),
+                        onLongPress: () => this.changeScene('servicos')
                     },{
                         icon: 'label',
                         value: 'Contato',
-                        //label: '24',
                         active: route === 'contato',
                         onPress: () => this.changeScene('contato'),
                         onLongPress: () => this.changeScene('contato')
@@ -115,6 +106,8 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
     }
 }
 
+//style={{ marginTop: 4 }}
+
 const styles = StyleSheet.create<any>({
   /*toolbar: {
         position: 'absolute',
@@ -124,8 +117,8 @@ const styles = StyleSheet.create<any>({
         height: 56,
         flexDirection: 'row',
         alignItems: 'center'
-    },
-  container: {
+    },*/
+  /*container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
   },

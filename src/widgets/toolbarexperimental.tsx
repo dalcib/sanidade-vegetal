@@ -1,19 +1,9 @@
-import {
-    Animated,
-    findNodeHandle,
-    NativeModules,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableWithoutFeedback,
-    View,
-} from 'react-native';
+import {Animated, findNodeHandle, NativeModules, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View} from 'react-native';
 import React, { Component, PropTypes } from 'react';
+import {Icon, IconToggle, COLOR, TYPO, THEME_NAME, PRIMARY_COLORS} from 'react-native-material-design';
+const PRIMARY = 'paperBlue';
 
-import {Icon, IconToggle, COLOR, TYPO, PRIMARY, THEME_NAME, PRIMARY_COLORS} from 'react-native-material-design';
-
-/***
- */
+/****/
 function getColor(string) {
     if (string) {
         if (string.indexOf('#') > -1 || string.indexOf('rgba') > -1) {  return string; }
@@ -24,8 +14,7 @@ function getColor(string) {
 }
 
 function isFunction(obj) { return !!(obj && obj.constructor && obj.call && obj.apply);}
- /* 
- */
+ /****/
 
 const UIManager = NativeModules.UIManager;
 
@@ -152,7 +141,7 @@ const styles = StyleSheet.create({
 class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:string}> {
     constructor(props) {
         super(props);
-console.log(props)
+console.log(props.navigationState)
         this.state = {
             isSearchActive: props.isSearchActive,
             searchValue: ''
@@ -233,8 +222,8 @@ console.log(props)
                     fontSize: 16,
                     fontWeight: 'normal',
                 },
-                leftIcon: { color: 'rgba(0,0,0,.54)' },
-                rightIcon: { color: 'rgba(0,0,0,.54)' },
+                //leftIcon: { color: 'rgba(0,0,0,.54)' },
+                //rightIcon: { color: 'rgba(0,0,0,.54)' },
             };
         }
 
@@ -317,7 +306,6 @@ console.log(props)
         );
     }
     renderCenter = (style) => {
-        console.log('afsadfsdafsdafsdaf',this.state.isSearchActive, this.props.title);
         
         if (!this.state.isSearchActive) {
             const { title, onTitlePress } = this.props;

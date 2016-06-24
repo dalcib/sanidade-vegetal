@@ -41,7 +41,7 @@ interface IToolbar  {
     isSearchActive?: boolean;
     menuActions?: menuActions;
     onIconPress?: ()=>void;
-    onTitlePress?: ()=>{};
+    onTitlePress?: ()=>void;
     primary?: any,
     searchable?: searchable;
     style?: toolbarStyle;
@@ -53,13 +53,20 @@ interface IToolbar  {
 
 
 
-const Toolbar: React.SFC<IToolbar> = ({title, actions}) => <ToolbarExperimental  
-                        icon={'menu'} 
-                        primary={theme} 
-                        title={title} 
-                        actions={actions}
-                        onIconPress={()=>{Actions.refresh({key:'drawer', open:true})}}
-                     />
+const Toolbar: React.SFC<IToolbar> = ({title, actions, isSearchActive, searchable}) => {
+
+
+    return (
+            <ToolbarExperimental  
+            icon={'menu'} 
+            primary={theme} 
+            title={title} 
+            searchable={searchable}
+            isSearchActive={isSearchActive}
+            onIconPress={()=>{Actions.refresh({key:'drawer', open:true})}}
+        />)
+}
+            // actions={actions}
 
                           //actions={[{icon: 'warning'},  {icon: 'help', onPress: ()=>{}}]}  
                           //rightIconContainer={{margin: 10}}

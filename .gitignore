@@ -38,5 +38,7 @@ buck-out/
 \.buckd/
 android/app/build/
 android/.gradle/
+android/app/sv.keystroke
+assets/android/sv.keystroke
 ios
 app

@@ -2,20 +2,26 @@
 import * as React from 'react';
 import { Component } from 'react';
 import {AppRegistry, StyleSheet, Text, View, BackAndroid, Image} from 'react-native';
-import {Scene, Router, Actions, DefaultRenderer} from 'react-native-router-flux';
+import {Scene, Router, Actions, DefaultRenderer} from 'react-native-mobx';
 import Drawer from 'react-native-drawer';
 import {Drawer as MaterialDrawer,  COLOR, TYPO} from 'react-native-material-design';
 import SearchPage from './widgets/search'
 import ToolbarExperimental from './widgets/toolbarexperimental'
+//import {ToolbarExperimental} from 'react-native-material-ui'
+
+import store from './store'
 import Menu from './common/menu'
 import Toolbar from './common/toolbar'
-import Alp from './scenes/alp'
 import CefitiForm from './cefiti/form'
-// import Mapa from './scenes/mapa'
-// import Mapa from './scenes/mapa'
-// import Mapa from './scenes/mapa'
-// import Mapa from './scenes/mapa'
-// import Mapa from './scenes/mapa'
+import CefitiStore from './cefiti/store'
+import TrexForm from './scenes/trex'
+import PviaForm from './scenes/pvia'
+import Quarentenarias from './scenes/quarentenarias'
+import Alertas from './scenes/alertas'
+import Alp from './scenes/alp'
+import Contingencia from './scenes/contingencia'
+import Servicos from './scenes/servicos'
+import Contato from './scenes/contato'
 
 
 import Home  from './scenes/home'
@@ -38,26 +44,40 @@ const Bar: React.SFC<{title?:string, actions?:actions[]}> = ({title, actions}) =
 
 export default class App extends React.Component <{},{}> {
   render() {
-    return <Router navBar={Toolbar}  > 
+    return <Router 
+              store={store}
+              navBar={ToolbarExperimental}    
+              icon={'menu'} 
+              primary={theme}
+              actions={[{icon: 'warning'},  {icon: 'help', onPress: ()=>{}}]}  
+              rightIconStyle={{margin: 10}}
+              onIconPress={()=>{Actions.refresh({key:'drawer', open:true})}}
+            > 
     <Scene key="root" >  
-        <Scene key="drawer" component={NavDrawer} sceneStyle={{flex:1}} > 
+        <Scene key="drawer" component={NavDrawer}  > 
           <Scene key='main' > 
             <Scene key="home" component={Home} title={'Home'}  sceneStyle={styles.scene}  />
+            <Scene key="cefitiForm" component={CefitiForm} title={"CEFiTI"}  initial={true} sceneStyle={styles.scene} />
+            <Scene key="pviaForm" component={PviaForm} title={"PVIA"} sceneStyle={styles.scene}  />
+            <Scene key="trexForm" component={TrexForm} title={"T-REX"} sceneStyle={styles.scene} />
+            <Scene key="search" component={SearchPage} isSearchActive={true} sceneStyle={styles.scene}
+                searchable={{autoFocus: true, placeholder: 'Busca'}} />
+            <Scene key="quarentenarias" component={Quarentenarias} title={"Pragas Quarentenárias"} sceneStyle={styles.scene}  />
+            <Scene key="alertas" component={Alertas} title={"Alertas Fitossanitárias"}  sceneStyle={styles.scene}  />
             <Scene key="alp" component={Alp} title={"Áreas Livre de Praga"} sceneStyle={styles.scene}  />
-            <Scene key="cefitiForm" component={CefitiForm} title={"CEFiTI"} sceneStyle={styles.scene} initial={true}/>
-            <Scene 
-                navBar={()=><Toolbar isSearchActive={true} searchable={{placeholder: 'Busca'}} actions={[{icon: 'warning'}]}  />}
-                key="search" 
-                component={SearchPage}  
-                sceneStyle={styles.scene} 
-                
-                 />
+            <Scene key="contingencia" component={Contingencia} title={"Planos de Contingência"} sceneStyle={styles.scene} />
+            <Scene key="servicos" component={Servicos} title={"Serviços do DSV"} sceneStyle={styles.scene}  />
+            <Scene key="contato" component={Contato} title={"Contato"} sceneStyle={styles.scene} />
           </Scene>
         </Scene>
       </Scene> 
     </Router>
   }  
 }
+/*                navBar={()=><Toolbar 
+                      isSearchActive={true} 
+                      searchable={{placeholder: 'Busca'}}
+                 />}*/
 
 class NavDrawer extends Component <{drawer:any, navigationState:any, onNavigate:any},{}>  {
     

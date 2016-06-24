@@ -7,14 +7,22 @@ import Typeahead from './../widgets/typeahead'
 import GooglePlacesAutocomplete from './../widgets/googleautocomplete'
 import {Button} from 'react-native-material-design'
 import {Actions} from 'react-native-router-flux'
-import store from './store'
+//import store from './store'
+//import uiStore from './../store'
+
+
+//onChangeText: (text)=>{store.handleChanges({target:{value:text, name:'nomeSci'}})}
 
 @observer
-export default class Avatars extends Component <{},{}> {
+export default class Avatars extends Component <{store:any},{}> {
     render() {
+       let store = this.props.store.cefiti
+        //console.log(store, this.props.store)
         return (
             <View style={styles.container}>
-                <Button value="Nome Sci" onPress={()=> Actions.search()} text={'TESTE'} />
+                <Button value="Nome Sci" onPress={()=> Actions.search({source:store.listaNomesSci, 
+                onChangeText: (text)=>{this.props.store.ui.searchValue = text}   
+                })}  text={''}/>
                 <Text style={styles.text}>
                     This component is an example of a nested route. It is a child of 'welcome'.
                 </Text>
