@@ -5,6 +5,8 @@ import {observer} from 'mobx-react/native'
 import Combo from './../widgets/combo'
 import Typeahead from './../widgets/typeahead'
 import GooglePlacesAutocomplete from './../widgets/googleautocomplete'
+import {Button} from 'react-native-material-design'
+import {Actions} from 'react-native-router-flux'
 import store from './store'
 
 @observer
@@ -12,6 +14,7 @@ export default class Avatars extends Component <{},{}> {
     render() {
         return (
             <View style={styles.container}>
+                <Button value="Nome Sci" onPress={()=> Actions.search()} text={'TESTE'} />
                 <Text style={styles.text}>
                     This component is an example of a nested route. It is a child of 'welcome'.
                 </Text>

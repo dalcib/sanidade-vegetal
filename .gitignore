@@ -36,6 +36,7 @@ npm-debug.log
 # BUCK
 buck-out/
 \.buckd/
-android/
+android/app/build/
+android/.gradle/
 ios
 app

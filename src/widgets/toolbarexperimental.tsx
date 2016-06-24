@@ -29,41 +29,46 @@ function isFunction(obj) { return !!(obj && obj.constructor && obj.call && obj.a
 
 const UIManager = NativeModules.UIManager;
 
+interface actions {
+        icon: string,
+        onPress?: ()=>void
+}
+
 interface menuActions {
-        onPress: ()=>{};
-        labels: string[];
+        onPress?: ()=>void;
+        labels?: string[];
 }
 
 interface searchable {
-        onChangeText: ()=>{};
-        onSearchClosed: ()=>{};
-        placeholder: string;
-        onSearchPressed: ()=>{};
-        onSubmitEditing: ()=>{};
-        autoFocus: boolean;
+        onChangeText?: ()=>void;
+        onSearchClosed?: ()=>void;
+        placeholder?: string;
+        onSearchPressed?: ()=>void;
+        onSubmitEditing?: ()=>void;
+        autoFocus?: boolean;
     }
 
 interface toolbarStyle{
-        toolbarContainer: any;
-        titleContainer: any;
-        leftIconContainer: any;
-        rightIconContainer: any;
+        toolbarContainer?: any;
+        titleContainer?: any;
+        leftIconContainer?: any;
+        rightIconContainer?: any;
     }
 
-interface Toolbar  {
-    actions: any;
-    icon: string;
-    iconProps: any;
-    isSearchActive: boolean;
-    menuActions: menuActions;
-    onIconPress: ()=>{};
-    onTitlePress: ()=>{};
-    primary: any,
-    searchable: searchable;
-    style: toolbarStyle;
-    theme: any,
-    title: string;
-    translucent: boolean
+interface IToolbar  {
+    actions?: actions[];
+    icon?: string;
+    iconProps?: any;
+    isSearchActive?: boolean;
+    menuActions?: menuActions;
+    onIconPress?: ()=>void;
+    onTitlePress?: ()=>{};
+    primary?: any,
+    searchable?: searchable;
+    style?: toolbarStyle;
+    theme?: any,
+    title?: string;
+    translucent?: boolean
 };
 
 
@@ -121,6 +126,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         elevation: 4,
+        position: 'absolute',
+        left:     0,
+        right:     0,
+        top:      0,
     },
     titleContainer: {
         flex: 1,
@@ -140,10 +149,10 @@ const styles = StyleSheet.create({
     }
 });
 
-class Toolbar extends Component <Toolbar,{isSearchActive:boolean, searchvalue:string}> {
+class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:string}> {
     constructor(props) {
         super(props);
-
+console.log(props)
         this.state = {
             isSearchActive: props.isSearchActive,
             searchValue: ''
@@ -308,6 +317,8 @@ class Toolbar extends Component <Toolbar,{isSearchActive:boolean, searchvalue:st
         );
     }
     renderCenter = (style) => {
+        console.log('afsadfsdafsdafsdaf',this.state.isSearchActive, this.props.title);
+        
         if (!this.state.isSearchActive) {
             const { title, onTitlePress } = this.props;
 
