@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component} from 'react';
-import {ScrollView, Text, StyleSheet, IntentAndroid} from 'react-native';
+import {ScrollView, Text, StyleSheet, Linking} from 'react-native';
 import { Subheader, Card, Button, TYPO, COLOR } from 'react-native-material-design';
 
 var theme = 'paperGreen';
@@ -16,7 +16,7 @@ export default class Serviços extends Component <{},{}>{
                         <Subheader text="Estações Quarentenárias" color={COLOR.paperGreen}  />
                         <Text style={styles.welcome}>Texto texto texto.</Text>
                         <Text style={styles.instructions}>Texto texto texto.</Text>
-                        <Button primary={theme} text="Link" onPress={() => IntentAndroid.openURL('http://www.agricultura.gov.br/vegetal/sanidade-vegetal')} />
+                        <Button primary={theme} text="Link" onPress={() => Linking.openURL('http://www.agricultura.gov.br/vegetal/sanidade-vegetal')} />
                     </Card.Body>
                 </Card>
                 <Card>
@@ -24,7 +24,7 @@ export default class Serviços extends Component <{},{}>{
                         <Subheader text="Empresas de Tratamento Fitossanitário com Fins Quarentenárias" color={COLOR.paperGreen}   />
                         <Text style={styles.welcome}>Texto texto texto.</Text>
                         <Text style={styles.instructions}>Texto texto texto.</Text>
-                        <Button primary={theme} text="Link" onPress={() => IntentAndroid.openURL('http://www.agricultura.gov.br/vegetal/sanidade-vegetal')} />
+                        <Button primary={theme} text="Link" onPress={() => Linking.openURL('http://www.agricultura.gov.br/vegetal/sanidade-vegetal')} />
                     </Card.Body>
                 </Card>
                 <Card>
@@ -32,7 +32,7 @@ export default class Serviços extends Component <{},{}>{
                         <Subheader text="Laboratórios da Rede Credenciada" color={COLOR.paperGreen}  />
                         <Text style={styles.welcome}>Texto texto texto.</Text>
                         <Text style={styles.instructions}>Texto texto texto.</Text>
-                        <Button primary={theme} text="Link" onPress={() => IntentAndroid.openURL('http://www.agricultura.gov.br/vegetal/sanidade-vegetal')} />
+                        <Button primary={theme} text="Link" onPress={() => Linking.openURL('http://www.agricultura.gov.br/vegetal/sanidade-vegetal')} />
                     </Card.Body>
                 </Card>
                 <Card>
@@ -40,7 +40,7 @@ export default class Serviços extends Component <{},{}>{
                             <Subheader text="Análise de Risco de Pragas" color={COLOR.paperGreen}  />
                         <Text style={styles.welcome}>Texto texto texto.</Text>
                         <Text style={styles.instructions}>Texto texto texto.</Text>
-                        <Button primary={theme} text="Link" onPress={() => IntentAndroid.openURL('http://www.agricultura.gov.br/vegetal/sanidade-vegetal')} />
+                        <Button primary={theme} text="Link" onPress={() => Linking.openURL('http://www.agricultura.gov.br/vegetal/sanidade-vegetal')} />
                     </Card.Body>
                 </Card>
 

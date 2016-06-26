@@ -5,9 +5,10 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 
 var Mapa = () => <View style={styles.imageWrapper}>
                       <Image 
+                        style={{height: 350, width: null}}
                         source={require("./../../assets/moko_sigatoka_s.png")} 
-                        resizeMode={'stretch'} 
-                        style={styles.image}/>
+                        resizeMode={'contain'} 
+                        />
                  </View>
 
 
@@ -26,6 +27,8 @@ let styles = StyleSheet.create<any>({
   }
 })
 
+//style={styles.image}
 //resizeMode={'contain'}
 //export default observer(Mapa);
+
 export default Mapa;

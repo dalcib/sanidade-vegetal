@@ -13,10 +13,12 @@ import store from './store'
 import Menu from './common/menu'
 import Toolbar from './common/toolbar'
 import CefitiForm from './cefiti/form'
+import CefitiResults from './cefiti/results'
 import CefitiStore from './cefiti/store'
 import TrexForm from './scenes/trex'
-import PviaForm from './scenes/pvia'
-import Quarentenarias from './scenes/quarentenarias'
+import PviaForm from './pvia/form'
+import PviaResults from './pvia/results'
+import Quarentenarias from './quarent/form'
 import Alertas from './scenes/alertas'
 import Alp from './scenes/alp'
 import Contingencia from './scenes/contingencia'
@@ -49,19 +51,21 @@ export default class App extends React.Component <{},{}> {
               navBar={ToolbarExperimental}    
               icon={'menu'} 
               primary={theme}
-              actions={[{icon: 'warning'},  {icon: 'help', onPress: ()=>{}}]}  
+              actions={[{icon: 'help', onPress: ()=>{}}]}  
               rightIconStyle={{margin: 10}}
               onIconPress={()=>{Actions.refresh({key:'drawer', open:true})}}
             > 
-    <Scene key="root" >  
+    <Scene key="root"  >  
         <Scene key="drawer" component={NavDrawer}  > 
           <Scene key='main' > 
-            <Scene key="home" component={Home} title={'Home'}  sceneStyle={styles.scene}  />
-            <Scene key="cefitiForm" component={CefitiForm} title={"CEFiTI"}  initial={true} sceneStyle={styles.scene} />
+            <Scene key="home" component={Home} title={''} initial={true} sceneStyle={styles.scene}  />
+            <Scene key="cefitiForm" component={CefitiForm} title={"CEFiTI"}   sceneStyle={styles.scene} />
+            <Scene key="cefitiResults" component={CefitiResults} title={"CEFiTI"}  sceneStyle={styles.scene} />
             <Scene key="pviaForm" component={PviaForm} title={"PVIA"} sceneStyle={styles.scene}  />
+            <Scene key="pviaResults" component={PviaResults} title={"PVIA"} sceneStyle={styles.scene}  />
             <Scene key="trexForm" component={TrexForm} title={"T-REX"} sceneStyle={styles.scene} />
             <Scene key="search" component={SearchPage} isSearchActive={true} sceneStyle={styles.scene}
-                searchable={{autoFocus: true, placeholder: 'Busca'}} />
+                searchable={{autoFocus: true, placeholder: 'Busca', onChangeText:store.ui.changeSearchValue}} />
             <Scene key="quarentenarias" component={Quarentenarias} title={"Pragas Quarentenárias"} sceneStyle={styles.scene}  />
             <Scene key="alertas" component={Alertas} title={"Alertas Fitossanitárias"}  sceneStyle={styles.scene}  />
             <Scene key="alp" component={Alp} title={"Áreas Livre de Praga"} sceneStyle={styles.scene}  />
@@ -75,7 +79,7 @@ export default class App extends React.Component <{},{}> {
   }  
 }
 /*                navBar={()=><Toolbar 
-                      isSearchActive={true} 
+                      isSearchActive={true}    this.props.store.ui.changeSearchValue(text)
                       searchable={{placeholder: 'Busca'}}
                  />}*/
 

@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
 class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:string}> {
     constructor(props) {
         super(props);
-console.log(props.navigationState)
+//console.log('navigationState',props.navigationState)
         this.state = {
             isSearchActive: props.isSearchActive,
             searchValue: ''

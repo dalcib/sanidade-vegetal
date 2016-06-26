@@ -5,6 +5,8 @@ import './../common/arrayplus'
 
 useStrict(true)
 
+export interface cefitiStore extends Store {}
+
 class Store {
   db = db;
   hospedeiros = hospedeiros;
@@ -37,6 +39,7 @@ class Store {
   } 
   
   @action handleChanges = (event) => {
+
     switch (event.target.name) {
       case 'hospSci':
         store.dados.hospVul = store.hospedeiros.find(hosp=> hosp.nomeSci === event.target.value).nomeVul;   

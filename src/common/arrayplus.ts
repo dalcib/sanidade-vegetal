@@ -51,7 +51,7 @@ if (!Array.prototype.groupBy) {
     }, {});
     var ret = [];
     for (var row in result) {
-      console.log(row)
+      //console.log(row)
       var item: any = {};
       var cat = (typeof prop === 'function') ? 'key' : prop;
       item[cat] = row;

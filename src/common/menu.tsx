@@ -17,7 +17,7 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
         const route = 'home' 
         return (
             <MaterialDrawer theme='light'>
-                <MaterialDrawer.Header height={100} image={<Image source={require('./../../assets/drawer.jpg')} resizeMode={'cover'} />}>
+                <MaterialDrawer.Header image={<Image source={require('./../../assets/drawer.jpg')}  />}>
                     <View style={styles.header}>
                         <Avatar size={80} image={<Image source={require('./../../assets/logo.png')}/>}/>
                         <View>
@@ -27,30 +27,21 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
                     </View>
                 </MaterialDrawer.Header>
                 <MaterialDrawer.Section style={{ marginTop: 4 }}
-                    items={[{
-                        icon: 'home',
-                        value: 'Início',
-                        active: !route || route === 'home',
-                        onPress: () => this.changeScene('home'),
-                        onLongPress: () => this.changeScene('home')
-                    }]}
-                />
-                <MaterialDrawer.Section style={{ marginTop: 4 }}
                     title="Requisitos Fitossanitários"
                     items={[{
-                        icon: 'label',
+                        icon: 'list',
                         value: 'CEFiTI - Trânsito Interestadual',
                         active: route === 'cefitiForm',
                         onPress: () => this.changeScene('cefitiForm'),
                         onLongPress: () => this.changeScene('cefitiForm')
                     }, {
-                        icon: 'label',
+                        icon: 'list',
                         value: 'PVIA - Importação',
                         active: route === 'pviaForm',
                         onPress: () => this.changeScene('pviaForm'),
                         onLongPress: () => this.changeScene('pviaForm')
                     }, {
-                        icon: 'label',
+                        icon: 'list',
                         value: 'T-REX - Exportação',
                         active: route === 'trexForm',
                         onPress: () => this.changeScene('trexForm'),
@@ -60,25 +51,25 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
                 <MaterialDrawer.Section style={{ marginTop: 4 }}
                     title="Pragas"
                     items={[{
-                       icon: 'list',
+                       icon: 'label',
                        value: 'Quarentenárias Regulamentadas',
                        active: route === 'quarentenarias',
                        onPress: () => this.changeScene('quarentenarias'),
                        onLongPress: () => this.changeScene('quarentenarias')
                      },{
-                       icon: 'list',
+                       icon: 'label',
                        value: 'Alertas Fitossanitários',
                        active: route === 'alertas',
                        onPress: () => this.changeScene('alertas'),
                        onLongPress: () => this.changeScene('alertas')
                      },{
-                        icon: 'list',
+                        icon: 'label',
                         value: 'Áreas Livres',
                         active: route === 'alp',
                         onPress: () => this.changeScene('alp'),
                         onLongPress: () => this.changeScene('alp')
                     },{
-                       icon: 'list',
+                       icon: 'label',
                        value: 'Planos de Contigência',
                        active: route === 'contingencia',
                        onPress: () => this.changeScene('contingencia'),
@@ -88,15 +79,21 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
                 <MaterialDrawer.Section style={{ marginTop: 4 }}
                     title="Informações"
                     items={[{
-                        icon: 'label',
+                        icon: 'home',
+                        value: 'Início',
+                        active: !route || route === 'home',
+                        onPress: () => this.changeScene('home'),
+                        onLongPress: () => this.changeScene('home')
+                    },{
+                        icon: 'layers',
                         value: 'Serviços do DSV',  
                         active: route === 'servicos',
                         onPress: () => this.changeScene('servicos'),
                         onLongPress: () => this.changeScene('servicos')
                     },{
-                        icon: 'label',
+                        icon: 'email',
                         value: 'Contato',
-                        active: route === 'contato',
+                        active: false, //route === 'contato',
                         onPress: () => this.changeScene('contato'),
                         onLongPress: () => this.changeScene('contato')
                     }]}
@@ -135,3 +132,15 @@ const styles = StyleSheet.create<any>({
     marginLeft: 15,
   },
 });
+
+/*
+                <MaterialDrawer.Section style={{ marginTop: 4 }}
+                    items={[{
+                        icon: 'home',
+                        value: 'Início',
+                        active: !route || route === 'home',
+                        onPress: () => this.changeScene('home'),
+                        onLongPress: () => this.changeScene('home')
+                    }]}
+                />
+                */
