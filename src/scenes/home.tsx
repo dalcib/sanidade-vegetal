@@ -40,9 +40,6 @@ export default class Home extends Component<{},{}> {
                         <Text>Testo texto texto.</Text>
                     </Card.Body>
                 
-                    <Card.Media
-                            image={<Image source={require('./../../assets/logo_mapa.png')} resizeMode={'stretch'}  style={{height: 250, width: null}} />}
-                        />
                 </Card>
                 <Button text="Início" primary={theme} onPress={() => { }} />
               </ScrollView>
@@ -51,3 +48,7 @@ export default class Home extends Component<{},{}> {
     }
 
 }
+
+/*                    <Card.Media
+                            image={<Image source={require('./../../assets/logo_mapa.png')} resizeMode={'stretch'}  style={{height: 250, width: null}} />}
+                        />*/

@@ -13,7 +13,7 @@ class Store {
   listaNomesSci:string[] = hospedeiros.unique('nomeSci').sort((a, b) => a.localeCompare(b));
   listaNomesVul:string[] = hospedeiros.unique('nomeVul').sort((a, b) => a.localeCompare(b));
   
-  @observable dados:dados = {hospSci: '', hospVul: '', prod: '', orig: '', dest: '' }
+  @observable dados:dados = {hospSci: 'Musa spp.', hospVul: '', prod: '', orig: '', dest: '' }
   
   @computed get empty():boolean { return (this.result.length === 0)}
   @computed get origem():estados[] { return this.estados.filter((estado)=> (estado.UF !== this.dados.dest || estado.UF === ''))};

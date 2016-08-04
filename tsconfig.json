@@ -9,8 +9,8 @@
         "outDir": "app",
         "rootDir": "src",
         "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true
-
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true
     },
     "exclude": [
         "node_modules",

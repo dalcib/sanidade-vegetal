@@ -1,10 +1,10 @@
 import * as React from 'react'
 import {Component} from 'react'
-import {ScrollView, View, Text, StyleSheet, Picker, Linking, TouchableWithoutFeedback } from 'react-native'
+import {ScrollView, View, Text, StyleSheet, Picker, Linking, TouchableWithoutFeedback, TouchableHighlight } from 'react-native'
 import {Button, TYPO, Subheader, List, Divider } from 'react-native-material-design'
 import {cefitiStore} from './store'
 
-
+var onPressText = (e)=>{console.log(e)}
 
 function Result({store}) {
   const cefitiStore:cefitiStore = store.cefiti
@@ -17,8 +17,11 @@ function Result({store}) {
               <Text  style={styles.title} >SEM EXIGÊNCIAS PARA O TRÂNSITO</Text>
           </View>
         </View>  )
-    : (<ScrollView>
+   : (<ScrollView>
       <View>
+      <TouchableHighlight onPress={(e)=>console.log(e)} underlayColor="gray">
+             <Text  >Exigências Fitossanitárias para o trânXXXXXXXXXXXXXXXXXXXXXXXXX</Text>
+      </TouchableHighlight> 
           <Text style={styles.title} >Exigências Fitossanitárias para o trânsito de {cefitiStore.dados.prod} de {cefitiStore.dados.hospVul} {cefitiStore.dados.hospSci} do {cefitiStore.dados.orig} para {cefitiStore.dados.dest} </Text>
 
           {cefitiStore.result.map((item, i)=>{ return (
@@ -34,6 +37,8 @@ function Result({store}) {
              </View>
           )})}
       </View>
+      
+    
 
         <View>
           <View>
@@ -58,7 +63,7 @@ function Result({store}) {
           <Subheader lines={2} text="LEGISLAÇÃO GERAL" />
         </View>
 
-    </ScrollView> )
+    </ScrollView>)
    )
   )
 }
@@ -68,6 +73,7 @@ const styles = StyleSheet.create<any>({
         flex: 1,
         padding: 8,
         margin: 8,
+        backgroundColor: 'white'
         //justifyContent: 'center',
         //alignItems: 'flex-start'
     },

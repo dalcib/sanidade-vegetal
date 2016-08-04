@@ -112,21 +112,17 @@ class NavDrawer extends Component <{drawer:any, navigationState:any, onNavigate:
                 tweenHandler={(ratio) => {
                       var drawerShadow = ratio < .2 ? ratio*5*5 : 5
                       return {
-                        drawer: {
-                          shadowRadius: drawerShadow,
-                        },
-                        main: {
-                          opacity:(2-ratio)/2,
-                        },
+                        drawer: { shadowRadius: drawerShadow },
+                        main: {opacity:(2-ratio)/2},
                       }
                     }
-                    //main: { opacity:Math.max(0.54,1-ratio) }
                 }>
                 <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
             </Drawer>
         );
     }
 }
+                    //main: { opacity:Math.max(0.54,1-ratio) }
 
 //if (Platform.OS === 'android') {
 BackAndroid.addEventListener('hardwareBackPress', function() {
