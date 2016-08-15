@@ -3,9 +3,9 @@ import { Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { Subheader, Ripple, Card } from 'react-native-material-design';
 
-export default class Contingencia extends Component <{},{}>{
+export default class Contingencia extends Component <{}, {}> {
 
-    render() {
+    render(): any {
         return (
             <View style={styles.container} >
                 <Subheader text="Planos de Contingência"/>

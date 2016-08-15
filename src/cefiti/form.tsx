@@ -1,71 +1,70 @@
 import * as React from 'react';
 import {Component} from 'react';
-import {View, Text, StyleSheet, Picker, TouchableWithoutFeedback } from 'react-native';
-import {observer} from 'mobx-react/native'
-import Combo from './../widgets/combo'
+import {View, Text, StyleSheet, /*Picker, TouchableWithoutFeedback */} from 'react-native';
+import {observer} from 'mobx-react/native';
+import Combo from './../widgets/combo';
 //import Typeahead from './../widgets/typeahead'
 //import GooglePlacesAutocomplete from './../widgets/googleautocomplete'
-import {Button, TYPO } from 'react-native-material-design'
-import {Actions} from 'react-native-router-flux'
-import {cefitiStore} from './store'
+import {Button, TYPO } from 'react-native-material-design';
+import {Actions} from 'react-native-router-flux';
+import {cefitiStore} from './store';
 //import uiStore from './../store'
 
 //onPress={()=> Actions.search({source:'listaNomesSci',   onChangeText: (text)=>{this.props.store.ui.searchValue = text}   })}
 //onChangeText: (text)=>{store.handleChanges({target:{value:text, name:'nomeSci'}})}
 
 @observer
-export default class CefitiForm extends Component <{store:any},{}> {
-    render() {
-       let store:cefitiStore = this.props.store.cefiti
-        //console.log(store, this.props.store)
-        return (
-            <View style={styles.container}>
+export default class CefitiForm extends Component <{store: any}, {}> {
+  render(): any {
+    let store: cefitiStore = this.props.store.cefiti;
+    return (
+        <View style={styles.container}>
 
-                <View style={styles.subtitle}>
-                    <Text style={styles.text}>
-                        Consulta ao Catalogo da Exigências Fitossanitárias para o Trânsito Interestadual
-                    </Text>
-                </View>
-
-
-                <Subheader text="Espécie Vegetal (nome científico):"  />
-                    <Text style={styles.field}  
-                    onPress={()=> Actions.search({source:'listaNomesSci', field:'hospSci',
-                    onChange:this.props.store.cefiti.handleChanges.bind(this), storeName:'cefiti'})}
-                    >{store.dados.hospSci} </Text>
-
-
-                <Subheader text="Espécie Vegetal (nome vulgar):"  />
-                    <Text style={styles.field}
-                    onPress={()=> Actions.search({source:'listaNomesVul', field:'hospVul',
-                    onChange:this.props.store.cefiti.handleChanges.bind(this), storeName:'cefiti'})}
-                    >{store.dados.hospVul} </Text>
-    
-
-                <Subheader text="Parte:"  />
-                <Combo 
-                  source={store.partes} itemLabel={''} itemValue={''}  value={store.dados.prod} 
-                  name={'prod'} onValueChange={store.handleChanges} />
-
-                <Subheader text="Origem:" />
-                <Combo 
-                  source={store.estados} itemLabel={'estado'} itemValue={'UF'} 
-                  value={store.dados.orig} name={'orig'} onValueChange={store.handleChanges} />
-
-                <Subheader text="Destino:" />
-                <Combo 
-                  source={store.estados} itemLabel={'estado'} itemValue={'UF'} 
-                  value={store.dados.dest} name={'dest'} onValueChange={store.handleChanges} />
-
-                <View style={styles.button}>
-                <Button value="Consultar"   text={'Consultar'} overrides={{textColor:'paperGreen', backgroundColor: 'paperGreen'}}
-                    onPress={Actions.cefitiResults} />
-                </View>
+            <View style={styles.subtitle}>
+                <Text style={styles.text}>
+                    Consulta ao Catalogo da Exigências Fitossanitárias para o Trânsito Interestadual
+                </Text>
             </View>
-        );
-    }
-}
 
+            <Subheader text="Espécie Vegetal (nome científico):"  />
+            <Text style={styles.field}
+                onPress={() => Actions.search({
+                    source: 'listaNomesSci', field: 'hospSci',
+                    onChange: this.props.store.cefiti.handleChanges.bind(this), storeName: 'cefiti'
+                })}
+                >{store.dados.hospSci} </Text>
+
+            <Subheader text="Espécie Vegetal (nome vulgar):"  />
+            <Text style={styles.field}
+                onPress={() => Actions.search({
+                    source: 'listaNomesVul', field: 'hospVul',
+                    onChange: this.props.store.cefiti.handleChanges.bind(this), storeName: 'cefiti'
+                })}
+                >{store.dados.hospVul} </Text>
+
+            <Subheader text="Parte:"  />
+            <Combo
+                source={store.partes} itemLabel={''} itemValue={''}  value={store.dados.prod}
+                name={'prod'} onValueChange={store.handleChanges} />
+
+            <Subheader text="Origem:" />
+            <Combo
+                source={store.estados} itemLabel={'estado'} itemValue={'UF'}
+                value={store.dados.orig} name={'orig'} onValueChange={store.handleChanges} />
+
+            <Subheader text="Destino:" />
+            <Combo
+                source={store.estados} itemLabel={'estado'} itemValue={'UF'}
+                value={store.dados.dest} name={'dest'} onValueChange={store.handleChanges} />
+
+            <View style={styles.button}>
+                <Button value="Consultar"   text={'Consultar'} overrides={{ textColor: 'paperGreen', backgroundColor: 'paperGreen' }}
+                    onPress={Actions.cefitiResults} />
+            </View>
+        </View>
+      );
+  }
+}
 
 const styles = StyleSheet.create<any>({
     container: {
@@ -83,7 +82,7 @@ const styles = StyleSheet.create<any>({
         width: 300,
         flex: 1,
         backgroundColor: '#FFFFFF',
-        color:'black',
+        color: 'black',
         //flex: 0.3,
         borderWidth: 1,
         borderColor: 'black',
@@ -100,10 +99,6 @@ const styles = StyleSheet.create<any>({
     }
 });
 
-
-
-
-
 const Subheader = ({text}) => (
            <View
                 style={substyles.container}
@@ -117,7 +112,7 @@ const Subheader = ({text}) => (
                     {text}
                 </Text>
             </View>
-)
+);
 
 //{paddingLeft: inset ? 72 : 16 }
 

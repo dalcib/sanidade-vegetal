@@ -1,4 +1,4 @@
-interface estados {
+interface estado {
   estado: string;
   UF: string;
 }
@@ -47,4 +47,4 @@ interface RNRFActions {
 }*/
 
 
-export {estados, dados, exig, hospedeiro}
+export {estado, dados, exig, hospedeiro}

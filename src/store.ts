@@ -1,4 +1,4 @@
-import { observable, computed, autorun, useStrict, action, toJS} from 'mobx';
+import { observable, useStrict, action} from 'mobx';
 import './common/arrayplus'
 import cefiti from './cefiti/store'
 import pvia from './pvia/store'

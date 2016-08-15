@@ -1,16 +1,15 @@
 import * as React from 'react';
-import {Component} from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+//import {Component} from 'react';
+import { View, Image, StyleSheet } from 'react-native';
 //import {observer} from 'mobx-react/native'
 
-var Mapa = () => <View style={styles.imageWrapper}>
-                      <Image 
+let Mapa = () => <View style={styles.imageWrapper}>
+                      <Image
                         style={{height: 350, width: null}}
-                        source={require("./../../assets/moko_sigatoka_s.png")} 
-                        resizeMode={'contain'} 
+                        source={require('./../../assets/moko_sigatoka_s.png')}
+                        resizeMode={'contain'}
                         />
-                 </View>
-
+                 </View>;
 
 let styles = StyleSheet.create<any>({
   imageWrapper: {
@@ -25,7 +24,7 @@ let styles = StyleSheet.create<any>({
   bottom: 0,
   right: 0,
   }
-})
+});
 
 //style={styles.image}
 //resizeMode={'contain'}

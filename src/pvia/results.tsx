@@ -5,8 +5,6 @@ import {Button, TYPO, Subheader, List, Divider } from 'react-native-material-des
 import {store as pviaStore} from './store'
 import {pvia} from './pviaDb'
 
-
-
 function Result({store}) {
   const pviaStore:pviaStore = store.pvia
       return (
@@ -63,6 +61,4 @@ const styles = StyleSheet.create<any>({
     }
 });
 
-
 export default Result
-

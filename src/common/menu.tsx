@@ -1,25 +1,24 @@
 import * as React from 'react';
 import { Component } from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import {Scene, Router, Actions, DefaultRenderer} from 'react-native-router-flux';
-import {Toolbar, Drawer as MaterialDrawer, Divider, Avatar, COLOR, TYPO} from 'react-native-material-design';
+import {Actions} from 'react-native-router-flux';
+import {Drawer as MaterialDrawer, Avatar, COLOR, TYPO} from 'react-native-material-design';
 
+export default class Menu extends React.Component <{closeDrawer: any}, {}> {
 
-export default class Menu extends React.Component <{closeDrawer:any},{}>{
-  
-   changeScene(path:string, name?:string):void{
-      Actions[path]()
-      this.props.closeDrawer()
-   } 
+   changeScene(path: string, name?: string): void {
+      Actions[path]();
+      this.props.closeDrawer();
+   }
 
-   render() {
-        const closeDrawer = this.props.closeDrawer
-        const route = 'home' 
+   render(): any {
+        //const closeDrawer: any = this.props.closeDrawer
+        const route = 'home';
         return (
-            <MaterialDrawer theme='light'>
-                <MaterialDrawer.Header image={<Image source={require('./../../assets/drawer.jpg')}  />}>
+            <MaterialDrawer theme="light">
+                <MaterialDrawer.Header image={<Image source={require('./../../assets/drawer.jpg')}  />}> // tslint:disable-line
                     <View style={styles.header}>
-                        <Avatar size={80} image={<Image source={require('./../../assets/logo.png')}/>}/>
+                        <Avatar size={80} image={<Image source={require('./../../assets/logo.png')}/>}/> // tslint:disable-line
                         <View>
                             <Text style={[styles.text, COLOR.paperGreen50, TYPO.paperFontTitle]} >Sanidade</Text>
                             <Text style={[styles.text, COLOR.paperGreen50, TYPO.paperFontTitle]} >Vegetal</Text>
@@ -86,7 +85,7 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
                         onLongPress: () => this.changeScene('home')
                     },{
                         icon: 'layers',
-                        value: 'Serviços do DSV',  
+                        value: 'Serviços do DSV',
                         active: route === 'servicos',
                         onPress: () => this.changeScene('servicos'),
                         onLongPress: () => this.changeScene('servicos')
@@ -97,7 +96,7 @@ export default class Menu extends React.Component <{closeDrawer:any},{}>{
                         onPress: () => this.changeScene('contato'),
                         onLongPress: () => this.changeScene('contato')
                     }]}
-                />         
+                />
             </MaterialDrawer>
         );
     }
@@ -125,7 +124,7 @@ const styles = StyleSheet.create<any>({
   },*/
   header: {
     paddingTop: 16,
-    flexDirection:'row'  
+    flexDirection: 'row'
   },
   text: {
     marginTop: 6,

@@ -1,33 +1,33 @@
 
 import * as React from 'react';
-import {Component } from 'react';
+//import {Component } from 'react';
 import {Actions} from 'react-native-router-flux';
-import {observer} from 'mobx-react/native'
-import {Text, View} from 'react-native';
-import ToolbarExperimental from './../widgets/toolbarexperimental'
+import {observer} from 'mobx-react/native';
+//import {Text, View} from 'react-native';
+import ToolbarExperimental from './../widgets/toolbarexperimental';
 
-var theme = 'paperGreen'; 
+let theme = 'paperGreen';
 
-interface actions {
-        icon: string,
-        onPress?: ()=>void
+interface actions { // tslint:disable-line
+        icon: string;
+        onPress?: () => void;
 }
 
-interface menuActions {
-        onPress?: ()=>void;
+interface menuActions { // tslint:disable-line
+        onPress?: () => void;
         labels?: string[];
 }
 
-interface searchable {
-        onChangeText?: ()=>void;
-        onSearchClosed?: ()=>void;
+interface searchable { // tslint:disable-line
+        onChangeText?: () => void;
+        onSearchClosed?: () => void;
         placeholder?: string;
-        onSearchPressed?: ()=>void;
-        onSubmitEditing?: ()=>void;
+        onSearchPressed?: () => void;
+        onSubmitEditing?: () => void;
         autoFocus?: boolean;
     }
 
-interface toolbarStyle{
+interface toolbarStyle { // tslint:disable-line
         toolbarContainer?: any;
         titleContainer?: any;
         leftIconContainer?: any;
@@ -40,35 +40,31 @@ interface IToolbar  {
     iconProps?: any;
     isSearchActive?: boolean;
     menuActions?: menuActions;
-    onIconPress?: ()=>void;
-    onTitlePress?: ()=>void;
-    primary?: any,
+    onIconPress?: () => void;
+    onTitlePress?: () => void;
+    primary?: any;
     searchable?: searchable;
     style?: toolbarStyle;
-    theme?: any,
+    theme?: any;
     title?: string;
-    translucent?: boolean
+    translucent?: boolean;
 };
 
-
-
-
-const Toolbar: React.SFC<IToolbar> = ({title, actions, isSearchActive, searchable}) => {
-
+const Toolbar: React.SFC<IToolbar> = ({title, isSearchActive, searchable}) => {
 
     return (
-            <ToolbarExperimental  
-            icon={'menu'} 
-            primary={theme} 
-            title={title} 
+            <ToolbarExperimental
+            icon={'menu'}
+            primary={theme}
+            title={title}
             searchable={searchable}
             isSearchActive={isSearchActive}
-            onIconPress={()=>{Actions.refresh({key:'drawer', open:true})}}
-        />)
-}
+            onIconPress={() => {Actions.refresh({key:'drawer', open:true});}}
+        />);
+};
             // actions={actions}
 
                           //actions={[{icon: 'warning'},  {icon: 'help', onPress: ()=>{}}]}  
                           //rightIconContainer={{margin: 10}}
 
-export default observer(Toolbar)
+export default observer(Toolbar);

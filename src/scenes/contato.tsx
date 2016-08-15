@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import { Subheader, Ripple, Card } from 'react-native-material-design';
+import { Subheader, Card } from 'react-native-material-design';
 
-export default class Contato extends Component <{},{}>{
+export default class Contato extends Component <{}, {}> {
 
-    render() {
+    render(): any {
         return (
             <View  >
                 <Subheader text="Contato"/>
