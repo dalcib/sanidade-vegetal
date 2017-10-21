@@ -1,10 +1,9 @@
 import {Animated, findNodeHandle, NativeModules, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View} from 'react-native';
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'; //tslint:disable-line
 import {Icon, IconToggle, COLOR, TYPO, THEME_NAME, PRIMARY_COLORS} from 'react-native-material-design';
 const PRIMARY = 'paperBlue';
 
-/****/
-function getColor(string) {
+function getColor(string: string): any {
     if (string) {
         if (string.indexOf('#') > -1 || string.indexOf('rgba') > -1) {  return string; }
         if (COLOR[string]) { return COLOR[string].color; }
@@ -13,31 +12,30 @@ function getColor(string) {
     return COLOR[`${PRIMARY}500`].color;
 }
 
-function isFunction(obj) { return !!(obj && obj.constructor && obj.call && obj.apply);}
- /****/
+function isFunction(obj: any): boolean { return !!(obj && obj.constructor && obj.call && obj.apply); }
 
 const UIManager = NativeModules.UIManager;
 
-interface actions {
-        icon: string,
-        onPress?: ()=>void
+interface Actions {
+        icon: string;
+        onPress?: () => void;
 }
 
-interface menuActions {
-        onPress?: ()=>void;
+interface MenuActions {
+        onPress?: () => void;
         labels?: string[];
 }
 
-interface searchable {
-        onChangeText?: ()=>void;
-        onSearchClosed?: ()=>void;
+interface Searchable {
+        onChangeText?: () => void;
+        onSearchClosed?: () => void;
         placeholder?: string;
-        onSearchPressed?: ()=>void;
-        onSubmitEditing?: ()=>void;
+        onSearchPressed?: () => void;
+        onSubmitEditing?: () => void;
         autoFocus?: boolean;
     }
 
-interface toolbarStyle{
+interface ToolbarStyle {
         toolbarContainer?: any;
         titleContainer?: any;
         leftIconContainer?: any;
@@ -45,21 +43,20 @@ interface toolbarStyle{
     }
 
 interface IToolbar  {
-    actions?: actions[];
+    actions?: Actions[];
     icon?: string;
     iconProps?: any;
     isSearchActive?: boolean;
-    menuActions?: menuActions;
-    onIconPress?: ()=>void;
-    onTitlePress?: ()=>{};
-    primary?: any,
-    searchable?: searchable;
-    style?: toolbarStyle;
-    theme?: any,
+    menuActions?: MenuActions;
+    onIconPress?: () => void;
+    onTitlePress?: () => {};
+    primary?: any;
+    searchable?: Searchable;
+    style?: ToolbarStyle;
+    theme?: any;
     title?: string;
-    translucent?: boolean
+    translucent?: boolean;
 };
-
 
 const propTypes = {
     actions: PropTypes.arrayOf(PropTypes.shape({
@@ -138,8 +135,8 @@ const styles = StyleSheet.create({
     }
 });
 
-class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:string}> {
-    constructor(props) {
+class Toolbar extends Component <IToolbar, {isSearchActive: boolean, searchvalue: string}> {
+    constructor(props: IToolbar) {
         super(props);
 //console.log('navigationState',props.navigationState)
         this.state = {
@@ -153,11 +150,11 @@ class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:s
         UIManager.showPopupMenu(
             findNodeHandle(this.refs.menu),
             menuActions.labels,
-            () => {},
+            () => {/* */},
             menuActions.onPress
         );
     };
-    onSearchTextChanged = (value) => {
+    onSearchTextChanged = (value: string): void => {
         const { searchable } = this.props;
 
         if (isFunction(searchable.onChangeText)) {
@@ -279,10 +276,10 @@ class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:s
 
         return result;
     }
-    focusSearchField() {
+    focusSearchField(): void {
         this._searchFieldRef.focus();
     }
-    renderLeftSide = (style) => {
+    renderLeftSide = (style: any) => {
         const { icon, onIconPress } = this.props;
 
         let iconName = icon;
@@ -305,8 +302,8 @@ class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:s
             </View>
         );
     }
-    renderCenter = (style) => {
-        
+    renderCenter = (style: any): any => {
+
         if (!this.state.isSearchActive) {
             const { title, onTitlePress } = this.props;
 
@@ -338,7 +335,7 @@ class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:s
             </View>
         );
     }
-    renderRightSide = (style) => {
+    renderRightSide = (style: any): any => {
         const { actions, menuActions, searchable } = this.props;
 
         let actionsMap = actions;
@@ -406,7 +403,7 @@ class Toolbar extends Component <IToolbar,{isSearchActive:boolean, searchvalue:s
 
         return result;
     }
-    render() {
+    render(): any {
         const style = this.getStyle();
 
         return (

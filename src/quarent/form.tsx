@@ -1,43 +1,45 @@
-import * as React from 'react';
+import * as React from 'react';  //tslint:disable-line:no-unused-variable
 import {Component} from 'react';
-import {View, Text, StyleSheet, Picker, TouchableWithoutFeedback } from 'react-native';
-import {observer} from 'mobx-react/native'
-import Combo from './../widgets/combo'
-import {Button, TYPO } from 'react-native-material-design'
-import {Actions} from 'react-native-router-flux'
-import {store as iStore} from './store'
+import {View, Text, StyleSheet} from 'react-native';
+import {observer} from 'mobx-react/native';
+//import Combo from './../widgets/combo';
+import {Button, TYPO } from 'react-native-material-design';
+import {Actions} from 'react-native-router-flux';
+//import {store} from './store';
+
+type search = {search?(props?: any): void, quarentResults?(props?: any): void}
+let actions = Actions as search;
 
 @observer
-export default class CefitiForm extends Component <{store:any},{}> {
+export default class CefitiForm extends Component <{store: any}, {}> {
     render() {
-       let quarentStore:iStore = this.props.store.pvia
+       let quarentStore = this.props.store.quarent;
         //console.log(store, this.props.store)
-        return (
-            <View style={styles.container}>
+       return (
+           <View style={styles.container}>
 
-                <View style={styles.subtitle}>
-                    <Text style={styles.text}>
-                        Consulta as Pragas Quarentenárias Regulamentadas
+               <View style={styles.subtitle}>
+                   <Text style={styles.text}>
+                       Consulta as Pragas Quarentenárias Regulamentadas
                     </Text>
-                </View>
+               </View>
 
+               <Subheader text="País de Origem:" />
+               <Text style={styles.field}
+                   onPress={() => actions.search({
+                       source: 'listaPest', field: 'Pest',
+                       onChange: this.props.store.quarent.handleChanges.bind(this), storeName: 'quarent'
+                   })}
+                   >{quarentStore.dados.Pest} </Text>
 
-                <Subheader text="País de Origem:"  />
-                    <Text style={styles.field}  
-                    onPress={()=> Actions.search({source:'listaPest', field:'Pest',
-                    onChange:this.props.store.quarent.handleChanges.bind(this), storeName:'quarent'})}
-                    >{quarentStore.dados.Pest} </Text>
-
-
-                 <View style={styles.button}>
-                <Button value="Consultar"   text={'Consultar'} overrides={{textColor:'paperGreen', backgroundColor: 'paperGreen'}}
-                    onPress={Actions.pviaResults} />
-                </View>
-            </View>
-        );
+               <View style={styles.button}>
+                   <Button text={'Consultar'} overrides={{ textColor: 'paperGreen', backgroundColor: 'paperGreen' }}
+                       onPress={actions.quarentResults} />
+               </View>
+           </View>
+       );
     }
 }
-
 
 const styles = StyleSheet.create<any>({
     container: {
@@ -55,7 +57,7 @@ const styles = StyleSheet.create<any>({
         width: 300,
         flex: 1,
         backgroundColor: '#FFFFFF',
-        color:'black',
+        color: 'black',
         //flex: 0.3,
         borderWidth: 1,
         borderColor: 'black',
@@ -72,10 +74,6 @@ const styles = StyleSheet.create<any>({
     }
 });
 
-
-
-
-
 const Subheader = ({text}) => (
            <View
                 style={substyles.container}
@@ -89,7 +87,7 @@ const Subheader = ({text}) => (
                     {text}
                 </Text>
             </View>
-)
+);
 
 //{paddingLeft: inset ? 72 : 16 }
 

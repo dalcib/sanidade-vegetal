@@ -1,16 +1,21 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import {Component} from 'react';
 import {View, Text, StyleSheet, /*Picker, TouchableWithoutFeedback*/ } from 'react-native';
 import {observer} from 'mobx-react/native';
 //import Combo from './../widgets/combo';
 import {Button, TYPO } from 'react-native-material-design';
 import {Actions} from 'react-native-router-flux';
-import {store as iStore} from './store';
+import {store} from './../store';
+
+type search = {search?(props?: any): void, pviaResults?(props?: any): void}
+let actions = Actions as search;
+
+//interface Store { store: store; }
 
 @observer
-export default class CefitiForm extends Component <{store: any}, {}> {
-    render(): any {
-      let pviaStore: iStore = this.props.store.pvia;
+export default class CefitiForm extends Component <{store}, {}> {
+    render() {
+      let pviaStore = this.props.store.pvia;
         //console.log(store, this.props.store)
       return (
           <View style={styles.container}>
@@ -23,31 +28,31 @@ export default class CefitiForm extends Component <{store: any}, {}> {
 
               <Subheader text="País de Origem:"  />
                   <Text style={styles.field}
-                  onPress={() => Actions.search({source:'listaOrig', field:'orig',
+                  onPress={() => actions.search({source:'listaOrig', field:'orig',
                   onChange:this.props.store.pvia.handleChanges.bind(this), storeName:'pvia'})}
                   >{pviaStore.dados.orig} </Text>
 
               <Subheader text="Produto:"  />
                   <Text style={styles.field}
-                  onPress={() => Actions.search({source:'listaProd', field:'prod',
+                  onPress={() => actions.search({source:'listaProd', field:'prod',
                   onChange:this.props.store.pvia.handleChanges.bind(this), storeName:'pvia'})}
                   >{pviaStore.dados.prod} </Text>
 
               <Subheader text="Gênero:"  />
                   <Text style={styles.field}
-                  onPress={() => Actions.search({source:'listaGen', field:'gen',
+                  onPress={() => actions.search({source:'listaGen', field:'gen',
                   onChange:this.props.store.pvia.handleChanges.bind(this), storeName:'pvia'})}
                   >{pviaStore.dados.gen} </Text>
 
               <Subheader text="Nome Científico:"  />
                   <Text style={styles.field}
-                  onPress={() => Actions.search({source:'listaEsp', field:'esp',
+                  onPress={() => actions.search({source:'listaEsp', field:'esp',
                   onChange:this.props.store.pvia.handleChanges.bind(this), storeName:'pvia'})}
                   >{pviaStore.dados.esp} </Text>
 
               <View style={styles.button}>
-              <Button value="Consultar"   text={'Consultar'} overrides={{textColor:'paperGreen', backgroundColor: 'paperGreen'}}
-                  onPress={Actions.pviaResults} />
+              <Button text={'Consultar'} overrides={{textColor:'paperGreen', backgroundColor: 'paperGreen'}}
+                  onPress={actions.pviaResults} />
               </View>
           </View>
       );

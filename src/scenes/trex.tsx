@@ -1,13 +1,13 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import { Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import { Subheader, Ripple, Card } from 'react-native-material-design';
+import { Subheader, Card } from 'react-native-material-design';
 
-export default class Trex extends Component <{},{}>{
+export default class Trex extends Component <{}, {}> {
 
-    render() {
+    render(): React.ReactElement<any> {
         return (
-            <View style={styles.container} >
+            < View style = {styles.container} >
                 <Subheader text="T-REX - REquisitos Fitossanitários para Exportação"/>
                 <Card>
                     <Card.Body>
@@ -15,7 +15,7 @@ export default class Trex extends Component <{},{}>{
                         <Text style={styles.instructions}>Texto texto texto.</Text>
                     </Card.Body>
                 </Card>
-            </View>
+            </View >
         );
     }
 }

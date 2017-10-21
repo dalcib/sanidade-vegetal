@@ -8,17 +8,17 @@ import ToolbarExperimental from './../widgets/toolbarexperimental';
 
 let theme = 'paperGreen';
 
-interface actions { // tslint:disable-line
+interface Actions {
         icon: string;
         onPress?: () => void;
 }
 
-interface menuActions { // tslint:disable-line
+interface MenuActions {
         onPress?: () => void;
         labels?: string[];
 }
 
-interface searchable { // tslint:disable-line
+interface Searchable {
         onChangeText?: () => void;
         onSearchClosed?: () => void;
         placeholder?: string;
@@ -27,7 +27,7 @@ interface searchable { // tslint:disable-line
         autoFocus?: boolean;
     }
 
-interface toolbarStyle { // tslint:disable-line
+interface ToolbarStyle {
         toolbarContainer?: any;
         titleContainer?: any;
         leftIconContainer?: any;
@@ -35,16 +35,16 @@ interface toolbarStyle { // tslint:disable-line
     }
 
 interface IToolbar  {
-    actions?: actions[];
+    actions?: Actions[];
     icon?: string;
     iconProps?: any;
     isSearchActive?: boolean;
-    menuActions?: menuActions;
+    menuActions?: MenuActions;
     onIconPress?: () => void;
     onTitlePress?: () => void;
     primary?: any;
-    searchable?: searchable;
-    style?: toolbarStyle;
+    searchable?: Searchable;
+    style?: ToolbarStyle;
     theme?: any;
     title?: string;
     translucent?: boolean;

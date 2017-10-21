@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import { Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import { Subheader, Ripple, Card } from 'react-native-material-design';
+import { Subheader, Card } from 'react-native-material-design';
 
-export default class Quarentenarias extends Component <{},{}>{
+export default class Quarentenarias extends Component <{}, {}> {
 
-    render() {
+    render(): React.ReactElement<any> {
         return (
             <View style={styles.container} >
                 <Subheader text="Pragas Quarentenárias Regulamentadas"/>

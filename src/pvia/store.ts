@@ -4,14 +4,14 @@ import './../common/arrayplus';
 
 useStrict(true);
 
-interface pviaDados {
+interface PviaDados {
   orig: string;
   prod: string;
   gen: string;
   esp: string;
 }
 
-class Store {
+class PviaStore {
   db: pvia[] = pviaDb;
 
   listaProd: string[] = this.db.unique('prod').sort((a, b) => a.localeCompare(b));
@@ -19,7 +19,7 @@ class Store {
   listaGen: string[] = this.db.unique('gen').sort((a, b) => a.localeCompare(b));
   listaEsp: string[] = this.db.unique('esp').sort((a, b) => a.localeCompare(b));
 
-  @observable dados: pviaDados = {orig: '', prod: '', gen: '', esp: '' };
+  @observable dados: PviaDados = {orig: '', prod: '', gen: '', esp: '' };
 
   @computed get empty(): boolean { return (this.result.length === 0); }
   @computed get completed(): boolean { return (Boolean(this.dados.prod) && Boolean(this.dados.orig) && Boolean(this.dados.gen) &&
@@ -31,12 +31,12 @@ class Store {
     (Boolean(this.dados.esp) ? (row.esp === this.dados.esp) : true)
   ); }); }
 
-  @action handleChanges = (event: any): void => {
+  @action handleChanges = (event: any) => {
     console.log('handleChanges', event);
-    store.dados[event.target.name] = event.target.value;
+    this.dados[event.target.name] = event.target.value;
   }
 
-  @action clean (): void {
+  @action clean () {
     this.dados.prod = '';
     this.dados.orig = '';
     this.dados.gen = '';
@@ -45,5 +45,5 @@ class Store {
 
 }
 
-export var store = new Store();
-export default store;
+export var pviaStore: PviaStore = new PviaStore();
+export default pviaStore;

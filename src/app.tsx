@@ -4,7 +4,7 @@ import { Component} from 'react';
 import {StyleSheet,  BackAndroid} from 'react-native';
 import {Scene, Router, Actions, DefaultRenderer} from 'react-native-mobx';
 import Drawer from 'react-native-drawer';
-//import {Drawer as MaterialDrawer,  COLOR, TYPO} from 'react-native-material-design';
+//import {Drawer as MaterialDrawer,  COLOR, TYPO} from 'react-native-material-ui';
 import SearchPage from './widgets/search';
 import ToolbarExperimental from './widgets/toolbarexperimental';
 //import {ToolbarExperimental} from 'react-native-material-ui'
@@ -12,6 +12,8 @@ import ToolbarExperimental from './widgets/toolbarexperimental';
 import store from './store';
 import Menu from './common/menu';
 //import Toolbar from './common/toolbar'
+
+
 import CefitiForm from './cefiti/form';
 import CefitiResults from './cefiti/results';
 //import CefitiStore from './cefiti/store'
@@ -26,15 +28,15 @@ import Servicos from './scenes/servicos';
 import Contato from './scenes/contato';
 import Home  from './scenes/home';
 
-let theme = 'paperGreen';
+let theme: string = 'paperGreen';
 
-const styles = StyleSheet.create<any>({
+const styles: any = StyleSheet.create<any>({
   scene: {
 	flex: 1,
 	marginTop: 56
 	}
 });
-
+console.log('dfsfdsf');
 //import { typography } from 'react-native-material-design-styles';
 //const TYPO = StyleSheet.create(typography);
 
@@ -50,40 +52,45 @@ const Bar: React.SFC<{title?:string, actions?:actions[]}> = ({title, actions}) =
 
 export default class App extends React.Component <{}, {}> {
   render(): any {
-    return <Router
-              store={store}
-              navBar={ToolbarExperimental}
-              icon={'menu'}
-              primary={theme}
-              actions={[{icon: 'help', onPress: () => {/* */}}]}
-              rightIconStyle={{margin: 10}}
-              onIconPress={() => {Actions.refresh({key:'drawer', open:true});}}
-            >
-    <Scene key="root"  >
-        <Scene key="drawer" component={NavDrawer}  >
-          <Scene key="main" >
-            <Scene key="cefitiForm" component={CefitiForm} title={'CEFiTI'}   sceneStyle={styles.scene} />
-            <Scene key="cefitiResults" component={CefitiResults} title={'CEFiTI'}  sceneStyle={styles.scene}/>
-            <Scene key="pviaForm" component={PviaForm} title={'PVIA'} sceneStyle={styles.scene}  />
-            <Scene key="pviaResults" component={PviaResults} title={'PVIA'} sceneStyle={styles.scene}  />
-            <Scene key="trexForm" component={TrexForm} title={'T-REX'} sceneStyle={styles.scene} />
-            <Scene key="search" component={SearchPage} isSearchActive={true} sceneStyle={styles.scene}
-                searchable={{autoFocus: true, placeholder: 'Busca', onChangeText:store.ui.changeSearchValue}} />
-            <Scene key="quarentenarias" component={Quarentenarias} title={'Pragas Quarentenárias'} sceneStyle={styles.scene}  />
-            <Scene key="alertas" component={Alertas} title={'Alertas Fitossanitárias'}  sceneStyle={styles.scene}  />
-            <Scene key="alp" component={Alp} title={'Áreas Livre de Praga'} sceneStyle={styles.scene}  />
-            <Scene key="contingencia" component={Contingencia} title={'Planos de Contingência'} sceneStyle={styles.scene} />
-            <Scene key="servicos" component={Servicos} title={'Serviços do DSV'} sceneStyle={styles.scene}  />
-            <Scene key="contato" component={Contato} title={'Contato'} sceneStyle={styles.scene} />
-            <Scene key="home" component={Home} title={''} initial={true} sceneStyle={styles.scene}  />
+    return (
+      <Router
+        store={store}
+        navBar={ToolbarExperimental}
+        icon={'menu'}
+        primary={theme}
+        actions={[{ icon: 'help', onPress: () => { } }]}
+        rightIconStyle={{ margin: 10 }}
+        onIconPress={() => { Actions.refresh({ key: 'drawer', open: true }); } }
+        >
+        <Scene key="root"  >
+          <Scene key="drawer" component={NavDrawer}  >
+            <Scene key="main" >
+              <Scene key="home" component={Home} title={''} initial={true} sceneStyle={styles.scene} />
+              <Scene key="cefitiForm" component={CefitiForm} title={'CEFiTI'} sceneStyle={styles.scene} />
+              <Scene key="cefitiResults" component={CefitiResults} title={'CEFiTI'} sceneStyle={styles.scene} />
+              <Scene key="pviaForm" component={PviaForm} title={'PVIA'} sceneStyle={styles.scene} />
+              <Scene key="pviaResults" component={PviaResults} title={'PVIA'} sceneStyle={styles.scene} />
+              <Scene key="trexForm" component={TrexForm} title={'T-REX'} sceneStyle={styles.scene} />
+              <Scene key="search" component={SearchPage} isSearchActive={true} sceneStyle={styles.scene}
+                searchable={{ autoFocus: true, placeholder: 'Busca', onChangeText: store.ui.changeSearchValue }} />
+              <Scene key="quarentenarias" component={Quarentenarias} title={'Pragas Quarentenárias'} sceneStyle={styles.scene} />
+              <Scene key="alertas" component={Alertas} title={'Alertas Fitossanitárias'} sceneStyle={styles.scene} />
+              <Scene key="alp" component={Alp} title={'Áreas Livre de Praga'} sceneStyle={styles.scene} />
+              <Scene key="contingencia" component={Contingencia} title={'Planos de Contingência'} sceneStyle={styles.scene} />
+              <Scene key="servicos" component={Servicos} title={'Serviços do DSV'} sceneStyle={styles.scene} />
+              <Scene key="contato" component={Contato} title={'Contato'} sceneStyle={styles.scene} />
+            </Scene>
           </Scene>
         </Scene>
-      </Scene>
-    </Router>;
+      </Router >
+    );
   }
 }
 
+
+
 /*
+
                navBar={()=><Toolbar 
                       isSearchActive={true}    this.props.store.ui.changeSearchValue(text)
                       searchable={{placeholder: 'Busca'}}
@@ -128,6 +135,7 @@ class NavDrawer extends Component <{drawer: any, navigationState: any, onNavigat
         );
     }
 }
+
                     //main: { opacity:Math.max(0.54,1-ratio) }
 
 //if (Platform.OS === 'android') {

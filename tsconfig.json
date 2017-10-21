@@ -7,10 +7,9 @@
         "experimentalDecorators": true,
         "jsx": "react",
         "outDir": "app",
-        "rootDir": "src",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "allowJs": true
+        "allowJs": false
     },
     "exclude": [
         "node_modules",

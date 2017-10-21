@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 //import {Component} from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 //import {observer} from 'mobx-react/native'
@@ -6,7 +6,7 @@ import { View, Image, StyleSheet } from 'react-native';
 let Mapa = () => <View style={styles.imageWrapper}>
                       <Image
                         style={{height: 350, width: null}}
-                        source={require('./../../assets/moko_sigatoka_s.png')}
+                        source={require('./../../assets/moko_sigatoka_s.png')} // tslint:disable-line
                         resizeMode={'contain'}
                         />
                  </View>;

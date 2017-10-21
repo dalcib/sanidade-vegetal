@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import {Picker, StyleSheet} from 'react-native';
 
 const Combo = ({source, itemLabel, itemValue, value, name, onValueChange}) => (

@@ -1,46 +1,44 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import {Component} from 'react';
-import {StyleSheet, TextInput, View, ListView, Image, Text, Dimensions, TouchableHighlight, TouchableWithoutFeedback, Platform, ActivityIndicatorIOS, ProgressBarAndroid, PixelRatio} from 'react-native';
-import {observer} from 'mobx-react/native'
-import {observable, computed} from 'mobx'
-import {Actions} from 'react-native-mobx'
-
+import {StyleSheet, View, ListView, Text, TouchableHighlight} from 'react-native';
+//import {observer} from 'mobx-react/native';
+import {computed} from 'mobx';
+import {Actions} from 'react-native-mobx';
 
 interface SearchListProps {
-  source:string, store:any, onChange:(text:string, field:string)=>void, storeName:string, field:string
+  source: string; store: any; onChange: (text: string, field: string) => void; storeName: string; field: string;
 }
 
-const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+const dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 class SearchList extends Component<SearchListProps, {}> {
 
-  constructor(props) {
-    super(props)
-    this.onPress = this.onPress.bind(this)
-  }
- 
-  onPress = (rowData:string):void => {
-    this.props.onChange({target:{name:this.props.field,value:rowData}})
-    this.props.store.ui.cleanSearchValue()
-    Actions.pop()
+  constructor(props: SearchListProps) {
+    super(props);
+    this.onPress = this.onPress.bind(this);
   }
 
-  @computed get dataSource() {
-    let text = this.props.store.ui.searchValue
-    const  source:string[]  = this.props.store[this.props.storeName][this.props.source];
+  onPress = (rowData: string): void => {
+    this.props.onChange({target: {name: this.props.field, value: rowData}});
+    this.props.store.ui.cleanSearchValue();
+    Actions.pop();
+  }
+
+  @computed get dataSource(): any {
+    let text = this.props.store.ui.searchValue;
+    const  source: string[]  = this.props.store[this.props.storeName][this.props.source];
     if (text.length >= 3 ) {
       const regex = new RegExp(`${text.trim()}`, 'i');
       let result = source.filter(h => h.search(regex) >= 0);
-      return dataSource.cloneWithRows(result)
+      return dataSource.cloneWithRows(result);
     } else {
-      return dataSource.cloneWithRows(source)
+      return dataSource.cloneWithRows(source);
     }
   }
 
-
-  renderRow = (rowData = {}) => {
+  renderRow = (rowData: any = {}): any => {
     return (
-      <TouchableHighlight onPress={()=>this.onPress(rowData)} underlayColor="#c8c7cc">
+      <TouchableHighlight onPress={() => this.onPress(rowData)} underlayColor="#c8c7cc">
         <View>
           <View style={defaultStyles.row}>
             <Text
@@ -56,8 +54,7 @@ class SearchList extends Component<SearchListProps, {}> {
     );
   }
 
-
-  render() {
+  render(): any {
     return (
       <View
         style={defaultStyles.container}
@@ -76,8 +73,6 @@ class SearchList extends Component<SearchListProps, {}> {
     );
   }
 };
-
-
 
 const defaultStyles = StyleSheet.create<any>({
   container: {
@@ -105,9 +100,7 @@ const defaultStyles = StyleSheet.create<any>({
 
 });
 
-export default SearchList
-
-
+export default SearchList;
 
 /*propTypes: {
     onPress: React.PropTypes.func,

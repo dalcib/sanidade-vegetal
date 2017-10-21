@@ -2,8 +2,15 @@ import { observable, computed, useStrict, action} from 'mobx';
 import {exig, dados, estado, hospedeiro } from './cefiti';
 import {db, hospedeiros} from './db';
 import './../common/arrayplus';
+//import {Actions} from 'react-native-router-flux';
 
 useStrict(true);
+
+/*interface MyActions extends {
+  search?(props?: any): void;
+}
+
+export const actions: MyActions = Actions;*/
 
 export {Store as cefitiStore} ;
 
@@ -78,5 +85,5 @@ class Store {
 
 }
 
-export var store = new Store();
+export var store: Store = new Store();
 export default store;

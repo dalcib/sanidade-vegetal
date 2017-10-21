@@ -1,35 +1,38 @@
-import * as React from 'react'
-import {Component} from 'react'
-import {ScrollView, View, Text, StyleSheet, Picker, Linking, TouchableWithoutFeedback } from 'react-native'
-import {Button, TYPO, Subheader, List, Divider } from 'react-native-material-design'
-import {store as pviaStore} from './store'
-import {pvia} from './pviaDb'
+import * as React from 'react'; //tslint:disable-line:no-unused-variable
+//import {Component} from 'react';
+import {ScrollView, View, Text, StyleSheet} from 'react-native';
+import {Divider} from 'react-native-material-design';
+//import store from './store';
+//import {pviaStore} from './store';
+import {pvia} from './pviaDb';
 
-function Result({store}) {
-  const pviaStore:pviaStore = store.pvia
-      return (
+function Result({store}: any): any {
+  const pviaStore: pviaStore = store.pvia;
+  return (
     <ScrollView>
       <View>
-          <Text style={styles.title} >Requisitos Fitossanitários para Importação  </Text>
-
-          {pviaStore.result.map((item:pvia, i:number)=>{ return (
-              <View key={i}> 
-                  <Divider />
-                  <View style={styles.row}><Text style={styles.field}>Produto Vegetal: </Text><Text>{item.prod}</Text></View>
-                  <View style={styles.row}><Text style={styles.field}>Nome Científico: </Text><Text>{item.esp}</Text></View>
-                  <View style={styles.row}><Text style={styles.field}>Parte Importada: </Text><Text>{item.parte}</Text></View>
-                  <View style={styles.row}><Text style={styles.field}>Categoria de Risco: </Text><Text>{item.cat}</Text></View>
-                  <View style={styles.row}><Text style={styles.field}>Classe: </Text><Text>{item.clas}</Text></View>
-                  <View style={styles.row}><Text style={styles.field}>Uso Proposto: </Text><Text>{item.uso}</Text></View>
-                  <View style={styles.row}><Text style={styles.field}>País de Origem: </Text><Text>{item.orig}</Text></View>
-                  <View >
-                    <Text style={styles.title}>Requisitos Fitossanitários: </Text>
-                    <Text>{item.req}</Text>
-                  </View>
-             </View>
-          )})}
+        <Text style={styles.title} >Requisitos Fitossanitários para Importação  </Text>
+        {pviaStore.result.map((item: pvia, i: number) => {
+          return (
+            <View key={i}>
+              <Divider />
+              <View style={styles.row}><Text style={styles.field}>Produto Vegetal: </Text><Text>{item.prod}</Text></View>
+              <View style={styles.row}><Text style={styles.field}>Nome Científico: </Text><Text>{item.esp}</Text></View>
+              <View style={styles.row}><Text style={styles.field}>Parte Importada: </Text><Text>{item.parte}</Text></View>
+              <View style={styles.row}><Text style={styles.field}>Categoria de Risco: </Text><Text>{item.cat}</Text></View>
+              <View style={styles.row}><Text style={styles.field}>Classe: </Text><Text>{item.clas}</Text></View>
+              <View style={styles.row}><Text style={styles.field}>Uso Proposto: </Text><Text>{item.uso}</Text></View>
+              <View style={styles.row}><Text style={styles.field}>País de Origem: </Text><Text>{item.orig}</Text></View>
+              <View >
+                <Text style={styles.title}>Requisitos Fitossanitários: </Text>
+                <Text>{item.req}</Text>
+              </View>
+            </View>
+          );
+        })}
       </View>
-    </ScrollView>)
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create<any>({
@@ -57,8 +60,8 @@ const styles = StyleSheet.create<any>({
         //fontStyle : 'italic' //normal
     },
     row: {
-        flexDirection:'row' 
+        flexDirection: 'row'
     }
 });
 
-export default Result
+export default Result;

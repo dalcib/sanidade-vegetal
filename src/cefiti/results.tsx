@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 //import {Component} from 'react'
 import {ScrollView, View, Text, StyleSheet, /*Picker, Linking, TouchableWithoutFeedback,*/ TouchableHighlight } from 'react-native';
 import {/*Button, TYPO,*/ Subheader, /*List,*/ Divider } from 'react-native-material-design';
 import {cefitiStore} from './store';
 
-let onPressText = (e: any): void => {console.log(e); };
+let onPressText = (): void => {console.log('onPress'); };
 
 function Result({store}: any): any {
   const cefitiStore: cefitiStore = store.cefiti;
@@ -23,7 +23,7 @@ function Result({store}: any): any {
    : (<ScrollView>
       <View>
       <TouchableHighlight onPress={onPressText} underlayColor="gray">
-             <Text  >Exigências Fitossanitárias para o trânXXXXXXXXXXXXXXXXXXXXXXXXX</Text>
+             <Text  >Exigências Fitossanitárias para o trânsito XXXXXXXXXXXXXXXXXXXXXXXXXXXXX</Text>
       </TouchableHighlight>
           <Text style={styles.title} >
             Exigências Fitossanitárias para o trânsito de
@@ -34,7 +34,7 @@ function Result({store}: any): any {
           {cefitiStore.result.map((item, i) => { return (
               <View key={i}>
                   <Divider />
-                  <Subheader lines={2} text={"'" + item.prag + "' - " + item.pragc} />
+                  <Subheader lines={2} text={"'" + item.prag + "' - " + item.pragc} /> // tslint:disable-line:quotemark
                   <Text >{item.desc}</Text>
                   {item.exig.map((exig, ii) => { return (
                     <Text key={ii}>

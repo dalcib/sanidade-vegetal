@@ -6,10 +6,11 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "@types/react": "^0.14.32",
+    "@types/react-native": "^0.29.30",
     "mobx": "^2.4.1",
     "mobx-react": "^3.4.0",
     "react": "15.1.0",
-    "@types/react": "15.1.0",
     "react-native": "^0.28.0",
     "react-native-drawer": "^2.2.4",
     "react-native-material-design": "^0.3.6",
@@ -17,12 +18,31 @@
     "react-native-mobx": "0.0.3",
     "react-native-router-flux": "^3.30.2"
   },
-  "eslintConfig": 
-    {
-        "parserOptions": {"ecmaVersion": 6, "sourceType": "module"},
-        "ecmaFeatures": {"modules": true, "blockBindings": true, "jsx": true },
-        "env": {"es6": true, "node": true, "browser": true, "mocha": true},
-        "plugins": ["react"],
-        "extends": ["eslint:recommended", "plugin:react/recommended"]
-    }
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "error"
+    },
+    "ecmaFeatures": {
+      "modules": true,
+      "blockBindings": true,
+      "jsx": true
+    },
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true,
+      "mocha": true
+    },
+    "plugins": [
+      "react"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ]
+  }
 }

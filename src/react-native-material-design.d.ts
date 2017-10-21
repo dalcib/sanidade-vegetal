@@ -1,7 +1,7 @@
 declare module 'react-native-material-design' {
 	import * as React from 'react';
 
-	export interface AvatarProps {
+	interface AvatarProps {
 		image?: any;
 		type?: any;
 		icon?: string;
@@ -17,8 +17,7 @@ declare module 'react-native-material-design' {
 	export class Avatar extends React.Component<AvatarProps, any> {
 	}
 	
-
-	export interface ButtonProps {
+	interface ButtonProps {
 		text: string;
 		theme?: any;
 		primary?: any;
@@ -35,8 +34,7 @@ declare module 'react-native-material-design' {
 	export class Button extends React.Component<ButtonProps, any> {
 	}
 	
-
-	export interface CardProps {
+	interface CardProps {
 		theme?: string;
 		overrides?: any;
 		backgroundColor?: string;
@@ -44,15 +42,17 @@ declare module 'react-native-material-design' {
 		elevation?: number;
 		disabled?: boolean;
 		onPress?: (...args: any[]) => any;
-		children: React.ReactNode;
+		children?: React.ReactNode;
 		style?: any;
 	}
 
 	export class Card extends React.Component<CardProps, any> {
+		static Media: Media;
+    static Body: Body;
+    static Actions: Actions;
 	}
 	
-
-	export interface MediaProps {
+	interface MediaProps {
 		image: any;
 		type?: any;
 		height?: number;
@@ -62,17 +62,15 @@ declare module 'react-native-material-design' {
 
 	export class Media extends React.Component<MediaProps, any> {
 	}
-	
 
-	export interface BodyProps {
+	interface BodyProps {
 		children: React.ReactNode;
 	}
 
 	export class Body extends React.Component<BodyProps, any> {
 	}
 	
-
-	export interface ActionsProps {
+	interface ActionsProps {
 		position?: any;
 		children: React.ReactNode;
 	}
@@ -80,8 +78,7 @@ declare module 'react-native-material-design' {
 	export class Actions extends React.Component<ActionsProps, any> {
 	}
 	
-
-	export interface CheckboxProps {
+	interface CheckboxProps {
 		label?: string;
 		theme?: any;
 		primary?: any;
@@ -94,8 +91,7 @@ declare module 'react-native-material-design' {
 	export class Checkbox extends React.Component<CheckboxProps, any> {
 	}
 	
-
-	export interface CheckboxGroupProps {
+	interface CheckboxGroupProps {
 		theme?: any;
 		primary?: any;
 		onSelect?: (...args: any[]) => any;
@@ -109,20 +105,7 @@ declare module 'react-native-material-design' {
 	export class CheckboxGroup extends React.Component<CheckboxGroupProps, any> {
 	}
 	
-
-	export interface DrawerProps {
-		theme?: any;
-		primary?: any;
-		overrides?: any;
-		backgroundColor?: string;
-		children: React.ReactNode;
-	}
-
-	export class Drawer extends React.Component<DrawerProps, any> {
-	}
-	
-
-	export interface HeaderProps {
+	interface HeaderProps extends React.Props<Header> {
 		image?: any;
 		type?: any;
 		backgroundColor?: string;
@@ -133,8 +116,7 @@ declare module 'react-native-material-design' {
 	export class Header extends React.Component<HeaderProps, any> {
 	}
 	
-
-	export interface SectionProps {
+	interface SectionProps extends React.Props<Section>  {
 		title?: string;
 		items?: any[];
 		icon?: string;
@@ -148,9 +130,21 @@ declare module 'react-native-material-design' {
 
 	export class Section extends React.Component<SectionProps, any> {
 	}
-	
 
-	export interface DividerProps {
+	interface DrawerProps extends React.Props<Drawer> {
+		theme?: any;
+		primary?: any;
+		overrides?: any;
+		backgroundColor?: string;
+		children?: React.ReactNode;
+	}
+
+	export class Drawer extends React.Component<DrawerProps, any> {
+		static Header: Header;
+		static Section: Section;
+	}
+	
+	interface DividerProps {
 		inset?: boolean;
 		theme?: any;
 		style?: any;
@@ -159,8 +153,7 @@ declare module 'react-native-material-design' {
 	export class Divider extends React.Component<DividerProps, any> {
 	}
 	
-
-	export interface IconProps {
+	interface IconProps {
 		name: string;
 		style?: any;
 		size?: number;
@@ -170,15 +163,14 @@ declare module 'react-native-material-design' {
 
 	export class Icon extends React.Component<IconProps, any> {
 	}
-	
 
-	export interface IconToggleProps {
+	interface IconToggleProps {
 		color: string;
 		opacity?: number;
 		disabled?: boolean;
 		onPress?: (...args: any[]) => any;
 		percent?: number;
-		children: React.ReactElement<any>;
+		children?: React.ReactElement<any>;
 		badge?: any;
 		value?: number;
 		animate?: boolean;
@@ -189,8 +181,7 @@ declare module 'react-native-material-design' {
 	export class IconToggle extends React.Component<IconToggleProps, any> {
 	}
 	
-
-	export interface ListProps {
+	interface ListProps {
 		primaryText: string;
 		secondaryText?: string;
 		captionText?: string;
@@ -211,8 +202,7 @@ declare module 'react-native-material-design' {
 	export class List extends React.Component<ListProps, any> {
 	}
 	
-
-	export interface RadioButtonProps {
+	interface RadioButtonProps {
 		label?: string;
 		theme?: any;
 		primary?: any;
@@ -225,8 +215,7 @@ declare module 'react-native-material-design' {
 	export class RadioButton extends React.Component<RadioButtonProps, any> {
 	}
 	
-
-	export interface RippleProps {
+	interface RippleProps {
 		color?: string;
 		onPress?: (...args: any[]) => any;
 		onLongPress?: (...args: any[]) => any;
@@ -236,8 +225,7 @@ declare module 'react-native-material-design' {
 	export class Ripple extends React.Component<RippleProps, any> {
 	}
 	
-
-	export interface RadioButtonGroupProps {
+	interface RadioButtonGroupProps {
 		theme?: any;
 		primary?: any;
 		onSelect?: (...args: any[]) => any;
@@ -251,8 +239,7 @@ declare module 'react-native-material-design' {
 	export class RadioButtonGroup extends React.Component<RadioButtonGroupProps, any> {
 	}
 	
-
-	export interface SubheaderProps {
+	interface SubheaderProps {
 		text: string;
 		color?: string;
 		inset?: boolean;
@@ -263,8 +250,7 @@ declare module 'react-native-material-design' {
 	export class Subheader extends React.Component<SubheaderProps, any> {
 	}
 	
-
-	export interface ToolbarProps {
+	interface ToolbarProps {
 		title?: string;
 		theme?: any;
 		primary?: any;

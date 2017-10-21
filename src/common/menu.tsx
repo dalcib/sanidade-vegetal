@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Component } from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import {Drawer as MaterialDrawer, Avatar, COLOR, TYPO} from 'react-native-material-design';
+import {Drawer, Avatar, COLOR, TYPO} from 'react-native-material-design';
 
 export default class Menu extends React.Component <{closeDrawer: any}, {}> {
 
@@ -15,8 +15,8 @@ export default class Menu extends React.Component <{closeDrawer: any}, {}> {
         //const closeDrawer: any = this.props.closeDrawer
         const route = 'home';
         return (
-            <MaterialDrawer theme="light">
-                <MaterialDrawer.Header image={<Image source={require('./../../assets/drawer.jpg')}  />}> // tslint:disable-line
+            <Drawer theme="light">
+                <Drawer.Header image={<Image source={require('./../../assets/drawer.jpg')}  />}> // tslint:disable-line
                     <View style={styles.header}>
                         <Avatar size={80} image={<Image source={require('./../../assets/logo.png')}/>}/> // tslint:disable-line
                         <View>
@@ -24,8 +24,8 @@ export default class Menu extends React.Component <{closeDrawer: any}, {}> {
                             <Text style={[styles.text, COLOR.paperGreen50, TYPO.paperFontTitle]} >Vegetal</Text>
                         </View>
                     </View>
-                </MaterialDrawer.Header>
-                <MaterialDrawer.Section style={{ marginTop: 4 }}
+                </Drawer.Header>
+                <Drawer.Section style={{ marginTop: 4 }}
                     title="Requisitos Fitossanitários"
                     items={[{
                         icon: 'list',
@@ -47,7 +47,7 @@ export default class Menu extends React.Component <{closeDrawer: any}, {}> {
                         onLongPress: () => this.changeScene('trexForm')
                     }]}
                 />
-                <MaterialDrawer.Section style={{ marginTop: 4 }}
+                <Drawer.Section style={{ marginTop: 4 }}
                     title="Pragas"
                     items={[{
                        icon: 'label',
@@ -75,7 +75,7 @@ export default class Menu extends React.Component <{closeDrawer: any}, {}> {
                        onLongPress: () => this.changeScene('contingencia')
                      }]}
                 />
-                <MaterialDrawer.Section style={{ marginTop: 4 }}
+                <Drawer.Section style={{ marginTop: 4 }}
                     title="Informações"
                     items={[{
                         icon: 'home',
@@ -97,7 +97,7 @@ export default class Menu extends React.Component <{closeDrawer: any}, {}> {
                         onLongPress: () => this.changeScene('contato')
                     }]}
                 />
-            </MaterialDrawer>
+            </Drawer>
         );
     }
 }
@@ -133,7 +133,7 @@ const styles = StyleSheet.create<any>({
 });
 
 /*
-                <MaterialDrawer.Section style={{ marginTop: 4 }}
+                <Drawer.Section style={{ marginTop: 4 }}
                     items={[{
                         icon: 'home',
                         value: 'Início',

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import { Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import { Subheader, Card } from 'react-native-material-design';

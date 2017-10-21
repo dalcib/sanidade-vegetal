@@ -1,32 +1,30 @@
 import { observable, useStrict, action} from 'mobx';
-import './common/arrayplus'
-import cefiti from './cefiti/store'
-import pvia from './pvia/store'
-import quarent from './quarent/store'
+import './common/arrayplus';
+import cefiti from './cefiti/store';
+import pviaStore from './pvia/store';
+import quarent from './quarent/store';
 
-
-useStrict(true)
+useStrict(true);
 
 class Ui {
 
-  @observable searchValue = ''
-  @observable source = []
-  @observable field = ''
-  @observable store = ''
+  @observable searchValue: string = '';
+  @observable source: any[] = [];
+  @observable field: string = '';
+  @observable store: string = '';
 
-  @action changeSearchValue = (text) => {this.searchValue = text; console.log(text)}
-  @action cleanSearchValue = () => {this.searchValue = ''}
+  @action changeSearchValue = (text: string) => {this.searchValue = text; console.log(text); }
+  @action cleanSearchValue = () => {this.searchValue = ''; }
 
 }
 
-var ui = new Ui();
+let ui = new Ui();
 
-var store = {
+export let store = {
   cefiti,
-  pvia,
+  pviaStore,
   quarent,
   ui
-}
-
+};
 
 export default store;

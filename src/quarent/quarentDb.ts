@@ -71711,24 +71711,24 @@ var quarentDb  = [
 
 interface quarent {
       Leg : string;
-      Cult : string | string[];
-      Esp :  string;
-      Prod : string;
-      Pais : string;
-      Pest : string;
-      DA : string;
-      A1 : string;
-      Revg : string,
-      Proc : string | string[];
-      ID : number;
-      Reino : string;
-      Filo : string;
-      Classe : string;
-      Ordem : string;
-      Fam : string;
-      COL : string;
-      ISO : string;
-      Pub : string
+      Cult? : string | string[];
+      Esp? :  string;
+      Prod? : string;
+      Pais? : string;
+      Pest? : string;
+      DA? : string;
+      A1? : string;
+      Revg? : string,
+      Proc? : string | string[];
+      ID? : number;
+      Reino? : string;
+      Filo? : string;
+      Classe? : string;
+      Ordem? : string;
+      Fam? : string;
+      COL? : string;
+      ISO? : string;
+      Pub? : string
 }
 
   export  {quarentDb, quarent}

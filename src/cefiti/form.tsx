@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import {Component} from 'react';
 import {View, Text, StyleSheet, /*Picker, TouchableWithoutFeedback */} from 'react-native';
 import {observer} from 'mobx-react/native';
@@ -9,6 +9,9 @@ import {Button, TYPO } from 'react-native-material-design';
 import {Actions} from 'react-native-router-flux';
 import {cefitiStore} from './store';
 //import uiStore from './../store'
+
+type search = {search?(props?: any): void, cefitiResults?(props?: any): void}
+let actions = Actions as search;
 
 //onPress={()=> Actions.search({source:'listaNomesSci',   onChangeText: (text)=>{this.props.store.ui.searchValue = text}   })}
 //onChangeText: (text)=>{store.handleChanges({target:{value:text, name:'nomeSci'}})}
@@ -28,7 +31,7 @@ export default class CefitiForm extends Component <{store: any}, {}> {
 
             <Subheader text="Espécie Vegetal (nome científico):"  />
             <Text style={styles.field}
-                onPress={() => Actions.search({
+                onPress={() => actions.search({
                     source: 'listaNomesSci', field: 'hospSci',
                     onChange: this.props.store.cefiti.handleChanges.bind(this), storeName: 'cefiti'
                 })}
@@ -36,7 +39,7 @@ export default class CefitiForm extends Component <{store: any}, {}> {
 
             <Subheader text="Espécie Vegetal (nome vulgar):"  />
             <Text style={styles.field}
-                onPress={() => Actions.search({
+                onPress={() => actions.search({
                     source: 'listaNomesVul', field: 'hospVul',
                     onChange: this.props.store.cefiti.handleChanges.bind(this), storeName: 'cefiti'
                 })}
@@ -58,8 +61,8 @@ export default class CefitiForm extends Component <{store: any}, {}> {
                 value={store.dados.dest} name={'dest'} onValueChange={store.handleChanges} />
 
             <View style={styles.button}>
-                <Button value="Consultar"   text={'Consultar'} overrides={{ textColor: 'paperGreen', backgroundColor: 'paperGreen' }}
-                    onPress={Actions.cefitiResults} />
+                <Button  text={'Consultar'} overrides={{ textColor: 'paperGreen', backgroundColor: 'paperGreen' }}
+                    onPress={actions.cefitiResults} />
             </View>
         </View>
       );
